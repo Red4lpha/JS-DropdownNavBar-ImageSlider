@@ -61,8 +61,8 @@
 
         /* -------------------------- */
         .image-slider {
-            margin: 100px auto 0 auto;
-            width: 800px;
+            /* margin: 110px auto 0 auto; */
+            margin-top: 110px;
             position: relative;
         }
         .image-slider h1{
@@ -72,28 +72,39 @@
             padding-bottom: 20px;
         }
         .image-slider-container {
-            width: 500px;
-            height: 750px;
-            margin: 0 auto;
+            width: 1600px;
             padding: 20px;
             border: 5px solid black;
             position:relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
         .image-slider-container img {
-            width: 100%;
+            width: 500px;
+            height: 750px;
+            padding: 10px;
+        }
+        #img3 {
+            padding-right: 30px;
+        }
+        #img1{
+            padding-left: 30px;
         }
         .image-slider svg {
             position: absolute;
             width: 75px;
             height: 75px;
-            top: 50%;
+            /* flex-basis: 75px; */
+            /* top: calc(50% - 38px); */
         }
         #left-arrow {
-            left: 10%;
+            left: 2px;
         }
         #right-arrow {
-            right: 10%;
+            right: 2px;
         }
     </style>
 
@@ -127,29 +138,71 @@
     <main>
         <section class="image-slider">
             <h1>image slider</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" id="left-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M3.414 7.657l3.95 3.95A1 1 0 0 1 5.95 13.02L.293 7.364a.997.997 0 0 1 0-1.414L5.95.293a1 1 0 1 1 1.414 1.414l-3.95 3.95H13a1 1 0 0 1 0 2H3.414z"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" id="right-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"></path></svg>
+            
             <div class="image-slider-container">
-                <img class="img active" src="./media/1.jpeg" alt="">
-                <img class="img hidden" src="./media/2.jpeg" alt="">
-                <img class="img hidden" src="./media/3.webp" alt="">
-                <img class="img hidden" src="./media/4.jpeg" alt="">
-                <img class="img hidden" src="./media/5.webp" alt="">
-                <img class="img hidden" src="./media/6.webp" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" id="left-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M3.414 7.657l3.95 3.95A1 1 0 0 1 5.95 13.02L.293 7.364a.997.997 0 0 1 0-1.414L5.95.293a1 1 0 1 1 1.414 1.414l-3.95 3.95H13a1 1 0 0 1 0 2H3.414z"></path></svg>
+                <img id="img1" class="img active" src="./media/1.jpeg" alt="">
+                <img id="img2" class="img active" src="./media/2.jpeg" alt="">
+                <img id="img3" class="img active" src="./media/3.webp" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" id="right-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"></path></svg>
             </div>
         </section>
     </main>
     
 </body>
 <script>
+    const imgArray = [
+    "./media/1.jpeg", 
+    "./media/2.jpeg",
+    "./media/3.webp", 
+    "./media/4.jpeg", 
+    "./media/5.webp", 
+    "./media/6.webp",  
+    ]
     const submenus = document.querySelectorAll('.toggable');
     const lControl = document.querySelector('#left-arrow');
     const rControl = document.querySelector('#right-arrow');
-    const imgArray = document.querySelectorAll('.img');
+    const img1 = document.querySelector('#img1');
+    const img2 = document.querySelector('#img2');
+    const img3 = document.querySelector('#img3');
+    const imgList = document.querySelectorAll('.img');
+    let count = 0;
+
+    //const imgArray = document.querySelectorAll('.img');
+    console.log(imgArray);
     function hover(e) {
         console.log("hover active");
         console.log(e);
     }
+    function handleImgClick(direction){
+        if(direction === 'right'){ count++;}
+        else if(direction === 'left'){
+            count--;
+            if (count < 0){
+                count = imgArray.length;
+            }
+        }
+
+
+        for(i = 0; i < imgList.length; i++){
+                let temp = (i + count) % (imgArray.length);
+                imgList[i].src = imgArray[temp];         
+/*                 console.log("count: ", count);
+                console.log("i = ", i);
+                console.log("temp: ", temp);
+                if(i === 2){console.log('---------------')}; */
+            }
+    }
+
+    rControl.addEventListener('click', () => {
+        handleImgClick('right');
+    });
+    lControl.addEventListener('click', () => {
+        handleImgClick('left');
+    });
+    
+
+
     console.table(imgArray);
     submenus.forEach((submenu) => {
         console.log(submenu);
