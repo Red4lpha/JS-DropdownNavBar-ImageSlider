@@ -72,8 +72,8 @@
             padding-bottom: 20px;
         }
         .image-slider-container {
-            width: 1600px;
-            padding: 20px;
+            width: 1550px;
+            padding: 10px;
             border: 5px solid black;
             position:relative;
             display: flex;
@@ -87,24 +87,33 @@
             height: 750px;
             padding: 10px;
         }
-        #img3 {
+/*      #img3 {
             padding-right: 30px;
         }
         #img1{
             padding-left: 30px;
-        }
+        } */
         .image-slider svg {
             position: absolute;
             width: 75px;
             height: 75px;
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
             /* flex-basis: 75px; */
             /* top: calc(50% - 38px); */
         }
+        .image-slider svg:hover {
+            fill: lightsteelblue;
+            stroke: black;
+        }
+        .image-slider svg:active {
+            transform: translateY(3px);
+        }
         #left-arrow {
-            left: 2px;
+            left: -5%;
         }
         #right-arrow {
-            right: 2px;
+            right: -5%;
         }
     </style>
 
@@ -168,6 +177,10 @@
     const imgList = document.querySelectorAll('.img');
     let count = 0;
 
+    setInterval(() =>{
+        console.log("interal hit");
+        handleImgClick('right');
+    },5000)
     //const imgArray = document.querySelectorAll('.img');
     console.log(imgArray);
     function hover(e) {
@@ -178,21 +191,18 @@
         if(direction === 'right'){ count++;}
         else if(direction === 'left'){
             count--;
-            if (count < 0){
-                count = imgArray.length;
-            }
+            if (count < 0){count = imgArray.length;}
         }
-
-
         for(i = 0; i < imgList.length; i++){
                 let temp = (i + count) % (imgArray.length);
                 imgList[i].src = imgArray[temp];         
-/*                 console.log("count: ", count);
+                /* console.log("count: ", count);
                 console.log("i = ", i);
                 console.log("temp: ", temp);
                 if(i === 2){console.log('---------------')}; */
             }
     }
+    
 
     rControl.addEventListener('click', () => {
         handleImgClick('right');
@@ -201,9 +211,6 @@
         handleImgClick('left');
     });
     
-
-
-    console.table(imgArray);
     submenus.forEach((submenu) => {
         console.log(submenu);
         //submenu.addEventListener('mouseover', hover);
