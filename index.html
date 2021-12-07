@@ -1,228 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-         * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-        ul {
-            list-style: none;
-        }
-        a, a:hover, a:visited, a:active{
-            color: inherit;
-            text-decoration: none;
-        }
-        .header-nav{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            background-color: lightgrey;
-            margin: 0;
-            border-bottom: 2px solid black;
-        }
-        .header-nav > li {
-            padding: 10px 20px;
-            text-transform: capitalize;
-            font-weight: 800;
-            font-size: large;
-            border-left: 1px solid black;
-            position: relative;
-        }
-        .header-nav li:hover {
-            background-color: lightsteelblue;
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a,
+      a:hover,
+      a:visited,
+      a:active {
+        color: inherit;
+        text-decoration: none;
+      }
+      .header-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgrey;
+        margin: 0;
+        border-bottom: 2px solid black;
+      }
+      .header-nav > li {
+        padding: 10px 20px;
+        text-transform: capitalize;
+        font-weight: 800;
+        font-size: large;
+        border-left: 1px solid black;
+        position: relative;
+      }
+      .header-nav li:hover {
+        background-color: lightsteelblue;
+      }
+      .header-nav > li:last-child {
+        border-right: 1px solid black;
+      }
+      .sub-nav {
+        position: absolute;
+        width: 100%;
+        background-color: lightgrey;
+        left: 0;
+        top: 100%;
+        font-size: small;
+        border: 1px solid black;
+      }
+      .sub-nav li {
+        padding: 5px;
+        border-top: 1px solid black;
+      }
+      .hidden {
+        display: none;
+      }
 
-        }
-        .header-nav > li:last-child {
-            border-right: 1px solid black;
-        }
-        .sub-nav{
-            position: absolute;
-            width: 100%;
-            background-color: lightgrey;
-            left: 0;
-            top: 100%;
-            font-size: small;
-            border: 1px solid black;
-        }
-        .sub-nav li {
-            padding: 5px;
-            border-top: 1px solid black;
-        }
-        .hidden {
-            display: none;
-        }
-
-        /* -------------------------- */
-        .image-slider {
-            /* margin: 110px auto 0 auto; */
-            margin-top: 110px;
-            position: relative;
-        }
-        .image-slider h1{
-            text-align: center;
-            font-weight: 900;
-            font-size: xx-large;
-            padding-bottom: 20px;
-        }
-        .image-slider-container {
-            width: 1550px;
-            padding: 10px;
-            border: 5px solid black;
-            position:relative;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-        }
-        .image-slider-container img {
-            width: 500px;
-            height: 750px;
-            padding: 10px;
-        }
-/*      #img3 {
+      /* -------------------------- */
+      .image-slider {
+        /* margin: 110px auto 0 auto; */
+        margin-top: 110px;
+        position: relative;
+      }
+      .image-slider h1 {
+        text-align: center;
+        font-weight: 900;
+        font-size: xx-large;
+        padding-bottom: 20px;
+      }
+      .image-slider-container {
+        width: 1550px;
+        padding: 10px;
+        border: 5px solid black;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
+      .image-slider-container img {
+        width: 500px;
+        height: 750px;
+        padding: 10px;
+      }
+      /*      #img3 {
             padding-right: 30px;
         }
         #img1{
             padding-left: 30px;
         } */
-        .image-slider svg {
-            position: absolute;
-            width: 75px;
-            height: 75px;
-            cursor: pointer;
-            transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
-            /* flex-basis: 75px; */
-            /* top: calc(50% - 38px); */
-        }
-        .image-slider svg:hover {
-            fill: lightsteelblue;
-            stroke: black;
-        }
-        .image-slider svg:active {
-            transform: translateY(3px);
-        }
-        #left-arrow {
-            left: -5%;
-        }
-        #right-arrow {
-            right: -5%;
-        }
+      .image-slider svg {
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        cursor: pointer;
+        transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
+        /* flex-basis: 75px; */
+        /* top: calc(50% - 38px); */
+      }
+      .image-slider svg:hover {
+        fill: lightsteelblue;
+        stroke: black;
+      }
+      .image-slider svg:active {
+        transform: translateY(3px);
+      }
+      #left-arrow {
+        left: -5%;
+      }
+      #right-arrow {
+        right: -5%;
+      }
     </style>
-
-
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul class="header-nav">
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">home</a></li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">about</a></li>
-                <li class="toggable"><a href="http://" target="_blank" rel="noopener noreferrer">skills</a>
-                    <ul class="sub-nav hidden">
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Javascript</li>
-                    </ul>
-                </li>
-                <li class="toggable"><a href="http://" target="_blank" rel="noopener noreferrer">project</a>
-                    <ul class="sub-nav hidden">
-                        <li>proj 1</li>
-                        <li>proj 2</li>
-                        <li>proj 3</li>
-                        <li>proj 4</li>
-                    </ul>
-                </li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">contact</a></li>
+      <nav>
+        <ul class="header-nav">
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer">home</a>
+          </li>
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              >about</a
+            >
+          </li>
+          <li class="toggable">
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              >skills</a
+            >
+            <ul class="sub-nav hidden">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Javascript</li>
             </ul>
-        </nav>
+          </li>
+          <li class="toggable">
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              >project</a
+            >
+            <ul class="sub-nav hidden">
+              <li>proj 1</li>
+              <li>proj 2</li>
+              <li>proj 3</li>
+              <li>proj 4</li>
+            </ul>
+          </li>
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              >contact</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section class="image-slider">
-            <h1>image slider</h1>
-            
-            <div class="image-slider-container">
-                <svg xmlns="http://www.w3.org/2000/svg" id="left-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M3.414 7.657l3.95 3.95A1 1 0 0 1 5.95 13.02L.293 7.364a.997.997 0 0 1 0-1.414L5.95.293a1 1 0 1 1 1.414 1.414l-3.95 3.95H13a1 1 0 0 1 0 2H3.414z"></path></svg>
-                <img id="img1" class="img active" src="./media/1.jpeg" alt="">
-                <img id="img2" class="img active" src="./media/2.jpeg" alt="">
-                <img id="img3" class="img active" src="./media/3.webp" alt="">
-                <svg xmlns="http://www.w3.org/2000/svg" id="right-arrow" viewBox="-5 -5 24 24" width="32" fill="currentColor"><path d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"></path></svg>
-            </div>
-        </section>
+      <section class="image-slider">
+        <h1>image slider</h1>
+
+        <div class="image-slider-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="left-arrow"
+            viewBox="-5 -5 24 24"
+            width="32"
+            fill="currentColor"
+          >
+            <path
+              d="M3.414 7.657l3.95 3.95A1 1 0 0 1 5.95 13.02L.293 7.364a.997.997 0 0 1 0-1.414L5.95.293a1 1 0 1 1 1.414 1.414l-3.95 3.95H13a1 1 0 0 1 0 2H3.414z"
+            ></path>
+          </svg>
+          <img id="img1" class="img active" src="./media/1.jpeg" alt="" />
+          <img id="img2" class="img active" src="./media/2.jpeg" alt="" />
+          <img id="img3" class="img active" src="./media/3.webp" alt="" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="right-arrow"
+            viewBox="-5 -5 24 24"
+            width="32"
+            fill="currentColor"
+          >
+            <path
+              d="M10.586 5.657l-3.95-3.95A1 1 0 0 1 8.05.293l5.657 5.657a.997.997 0 0 1 0 1.414L8.05 13.021a1 1 0 1 1-1.414-1.414l3.95-3.95H1a1 1 0 1 1 0-2h9.586z"
+            ></path>
+          </svg>
+        </div>
+      </section>
     </main>
-    
-</body>
-<script>
+  </body>
+  <script>
     const imgArray = [
-    "./media/1.jpeg", 
-    "./media/2.jpeg",
-    "./media/3.webp", 
-    "./media/4.jpeg", 
-    "./media/5.webp", 
-    "./media/6.webp",  
-    ]
-    const submenus = document.querySelectorAll('.toggable');
-    const lControl = document.querySelector('#left-arrow');
-    const rControl = document.querySelector('#right-arrow');
-    const img1 = document.querySelector('#img1');
-    const img2 = document.querySelector('#img2');
-    const img3 = document.querySelector('#img3');
-    const imgList = document.querySelectorAll('.img');
+      "./media/1.jpeg",
+      "./media/2.jpeg",
+      "./media/3.webp",
+      "./media/4.jpeg",
+      "./media/5.webp",
+      "./media/6.webp",
+    ];
+    const submenus = document.querySelectorAll(".toggable");
+    const lControl = document.querySelector("#left-arrow");
+    const rControl = document.querySelector("#right-arrow");
+    const img1 = document.querySelector("#img1");
+    const img2 = document.querySelector("#img2");
+    const img3 = document.querySelector("#img3");
+    const imgList = document.querySelectorAll(".img");
     let count = 0;
 
-    setInterval(() =>{
-        console.log("interal hit");
-        handleImgClick('right');
-    },5000)
+    setInterval(() => {
+      console.log("interal hit");
+      handleImgClick("right");
+    }, 5000);
     //const imgArray = document.querySelectorAll('.img');
     console.log(imgArray);
     function hover(e) {
-        console.log("hover active");
-        console.log(e);
+      console.log("hover active");
+      console.log(e);
     }
-    function handleImgClick(direction){
-        if(direction === 'right'){ count++;}
-        else if(direction === 'left'){
-            count--;
-            if (count < 0){count = imgArray.length;}
+    function handleImgClick(direction) {
+      if (direction === "right") {
+        count++;
+      } else if (direction === "left") {
+        count--;
+        if (count < 0) {
+          count = imgArray.length;
         }
-        for(i = 0; i < imgList.length; i++){
-                let temp = (i + count) % (imgArray.length);
-                imgList[i].src = imgArray[temp];         
-                /* console.log("count: ", count);
+      }
+      for (i = 0; i < imgList.length; i++) {
+        let temp = (i + count) % imgArray.length;
+        imgList[i].src = imgArray[temp];
+        /* console.log("count: ", count);
                 console.log("i = ", i);
                 console.log("temp: ", temp);
                 if(i === 2){console.log('---------------')}; */
-            }
+      }
     }
-    
 
-    rControl.addEventListener('click', () => {
-        handleImgClick('right');
+    rControl.addEventListener("click", () => {
+      handleImgClick("right");
     });
-    lControl.addEventListener('click', () => {
-        handleImgClick('left');
+    lControl.addEventListener("click", () => {
+      handleImgClick("left");
     });
-    
+
     submenus.forEach((submenu) => {
-        console.log(submenu);
-        //submenu.addEventListener('mouseover', hover);
-        submenu.addEventListener('mouseover', () => {
-            let hoverElement = submenu.lastElementChild;
-            hoverElement.classList.remove('hidden');
-        });
-        submenu.addEventListener('mouseout', () => {
-            let hoverElement = submenu.lastElementChild;
-            hoverElement.classList.add('hidden');
-        });
+      console.log(submenu);
+      //submenu.addEventListener('mouseover', hover);
+      submenu.addEventListener("mouseover", () => {
+        let hoverElement = submenu.lastElementChild;
+        hoverElement.classList.remove("hidden");
+      });
+      submenu.addEventListener("mouseout", () => {
+        let hoverElement = submenu.lastElementChild;
+        hoverElement.classList.add("hidden");
+      });
     });
-
-</script>
+  </script>
 </html>
